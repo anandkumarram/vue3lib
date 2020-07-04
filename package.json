@@ -2,31 +2,65 @@
   "name": "vue3lib",
   "version": "0.1.0",
   "private": true,
+  "main": "dist/vue3lib.esm.js",
+  "browser": "dist/vue3lib.esm.js",
+  "module": "dist/vue3lib.esm.js",
+  "unpkg": "bundles/vue3lib.umd.min.js",
+  "files": [
+    "bundles/*",
+    "src/*",
+    "public/*",
+    "*.json",
+    "*.js"
+  ],
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "build:umd": "vue-cli-service build --report --target lib --name vue3lib ./src/entry.js --dest bundles/",
+    "build": "cross-env NODE_ENV=production rollup --config build/rollup.config.js --watch",
+    "build:ssr": "cross-env NODE_ENV=production rollup --config build/rollup.config.js --format cjs",
+    "build:es": "cross-env NODE_ENV=production rollup --config build/rollup.config.js --format es",
+    "build:unpkg": "cross-env NODE_ENV=production rollup --config build/rollup.config.js --format iife"
   },
   "dependencies": {
     "core-js": "^3.6.5",
-    "vue": "^2.6.11",
-    "vue-router": "^3.2.0",
-    "vuex": "^3.4.0"
+    "rollup": "^2.18.2",
+    "vue": "^3.0.0-beta.15",
+    "vue-router": "^4.0.0-alpha.6",
+    "vuex": "^4.0.0-alpha.1"
   },
   "devDependencies": {
+    "@rollup/plugin-alias": "^2.2.0",
+    "@rollup/plugin-commonjs": "^11.1.0",
+    "@rollup/plugin-replace": "^2.3.2",
+    "@rollup/plugin-node-resolve": "^8.1.0",
     "@vue/cli-plugin-babel": "~4.4.0",
     "@vue/cli-plugin-eslint": "~4.4.0",
     "@vue/cli-plugin-router": "~4.4.0",
     "@vue/cli-plugin-vuex": "~4.4.0",
     "@vue/cli-service": "~4.4.0",
+    "@vue/compiler-sfc": "^3.0.0-beta.1",
     "@vue/eslint-config-prettier": "^6.0.0",
     "babel-eslint": "^10.1.0",
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.5",
     "eslint": "^6.7.2",
     "eslint-plugin-prettier": "^3.1.3",
-    "eslint-plugin-vue": "^6.2.2",
+    "eslint-plugin-vue": "^7.0.0-alpha.0",
     "prettier": "^1.19.1",
+    "rollup-plugin-alias": "^2.2.0",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-vue": "^6.0.0-alpha.8",
+    "rollup-plugin-css-only": "^2.0.0",
+    "rollup-plugin-scss": "^2.4.0",
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-terser": "^5.3.0",
     "sass": "^1.26.5",
     "sass-loader": "^8.0.2",
-    "vue-template-compiler": "^2.6.11"
+    "vue-cli-plugin-vue-next": "~0.1.3",
+    "cross-env": "^7.0.2",
+    "minimist": "^1.2.5"
+  },
+  "peerDependencies": {
+    "vue": "^3.0.0-beta.15"
   }
 }

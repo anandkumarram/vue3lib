@@ -5,6 +5,11 @@
 npm install
 ```
 
+### to bundle as es module
+```
+npm run build:es
+```
+
 ### Compiles and hot-reloads for development
 ```
 npm run serve
