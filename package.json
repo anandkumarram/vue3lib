@@ -2,12 +2,12 @@
   "name": "vue3lib",
   "version": "0.1.0",
   "private": true,
-  "main": "dist/vue3lib.esm.js",
-  "browser": "dist/vue3lib.esm.js",
-  "module": "dist/vue3lib.esm.js",
+  "main": "dist/vue3lib.common.js",
+  "browser": "dist/vue3lib.common.js",
+  "module": "dist/vue3lib.common.js",
   "unpkg": "bundles/vue3lib.umd.min.js",
   "files": [
-    "bundles/*",
+    "dist/*",
     "src/*",
     "public/*",
     "*.json",
@@ -15,11 +15,7 @@
   ],
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build:umd": "vue-cli-service build --report --target lib --name vue3lib ./src/entry.js --dest bundles/",
-    "build": "cross-env NODE_ENV=production rollup --config build/rollup.config.js --watch",
-    "build:ssr": "cross-env NODE_ENV=production rollup --config build/rollup.config.js --format cjs",
-    "build:es": "cross-env NODE_ENV=production rollup --config build/rollup.config.js --format es",
-    "build:unpkg": "cross-env NODE_ENV=production rollup --config build/rollup.config.js --format iife"
+    "build": "vue-cli-service build --report --target lib --name vue3lib ./src/entry.js"
   },
   "dependencies": {
     "core-js": "^3.6.5",

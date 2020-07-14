@@ -1,7 +1,5 @@
 <template>
-  <button @click="increment">
-    Count is: {{ count }}, double is {{ double }}, click to increment.
-  </button>
+  <div id="background"></div>
 </template>
 
 <script>
@@ -24,3 +22,15 @@ export default {
   }
 };
 </script>
+
+<style>
+#background {
+  width: 100vw;
+  height: 100vh;
+  background-image: url("~@/assets/fuji-bg.jpg");
+  filter: blur(8px) brightness(0.5);
+  z-index: -1;
+  position: absolute;
+  background-size: cover;
+}
+</style>
